@@ -32,15 +32,16 @@
     "bedrock-express": "^2.0.6",
     "bedrock-karma": "^1.0.0",
     "bedrock-quasar": "^1.0.0",
+    "bedrock-quasar-form-generator": "file:..",
     "bedrock-server": "^2.2.0",
     "bedrock-test": "^2.0.0",
     "bedrock-views": "^6.2.0",
     "bedrock-vue": "^1.2.0",
-    "bedrock-quasar-form-generator": "file:..",
     "bedrock-web": "^1.0.0",
     "bedrock-webpack": "^2.0.0",
     "vue": "^2.6.6",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuelidate": "^0.7.4"
   },
   "bedrock": {
     "browserDependencies": [
@@ -49,7 +50,8 @@
       "bedrock-vue",
       "bedrock-quasar-form-generator",
       "vue",
-      "vue-router"
+      "vue-router",
+      "vuelidate"
     ],
     "manifest": {
       "@fortawesome/fontawesome-free": {
