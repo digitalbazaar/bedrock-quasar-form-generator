@@ -28,8 +28,12 @@
  */
 'use strict';
 
+import {BrAddressForm} from 'bedrock-vue-address-form';
 import {BrQFormGenerator} from 'bedrock-quasar-form-generator';
 import {minLength, required} from 'vuelidate/lib/validators';
+import Vue from 'vue';
+
+Vue.component('br-address-form', BrAddressForm);
 
 export default {
   name: 'Home',
@@ -50,7 +54,13 @@ export default {
         status: null,
         happy: false,
         testReadOnly: 'readonly',
-        testDisabled: 'disabled'
+        testDisabled: 'disabled',
+        address: {
+          addressLocality: '',
+          addressRegion: '',
+          postalCode: '',
+          streetAddress: ''
+        }
       },
       vocab: {
         name: {
@@ -77,6 +87,10 @@ export default {
           range: 'string',
           label: 'Status',
           inputType: 'enum'
+        },
+        address: {
+          range: 'PostalAddress',
+          label: 'Address'
         }
       },
       schema: {
@@ -119,6 +133,9 @@ export default {
           label: 'Readonly',
           inputType: 'text',
           readonly: true
+        },
+        address: {
+          component: 'br-address-form'
         }
       }
     };
