@@ -1,6 +1,6 @@
 # bedrock-quasar-form-generator ChangeLog
 
-## 0.0.0 - 2019-xx-xx
+## 1.0.0 - 2019-03-07
 
 ### Added
 - Add core files.
