@@ -55,12 +55,9 @@ export default {
   },
   computed: {
     fields() {
-      const {value, vocab, schema, inputTypeMap} = this;
+      const {vocab, schema, inputTypeMap} = this;
       const fields = [];
-      for(const key in value) {
-        if(!(key in schema)) {
-          continue;
-        }
+      for(const key in schema) {
         const v = vocab[key] || {};
         const s = schema[key] || {};
         const field = {id: key, ...v, ...s};
