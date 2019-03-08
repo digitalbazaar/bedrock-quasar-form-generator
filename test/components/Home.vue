@@ -56,6 +56,7 @@ export default {
         testReadOnly: 'readonly',
         testDisabled: 'disabled',
         address: {
+          addressCountry: '',
           addressLocality: '',
           addressRegion: '',
           postalCode: '',
