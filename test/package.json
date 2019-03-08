@@ -37,7 +37,7 @@
     "bedrock-test": "^2.0.0",
     "bedrock-views": "^6.2.0",
     "bedrock-vue": "^1.2.0",
-    "bedrock-vue-address-form": "^1.0.0",
+    "bedrock-vue-address-form": "^2.0.0",
     "bedrock-web": "^1.0.0",
     "bedrock-webpack": "^2.0.0",
     "vue": "^2.6.6",
