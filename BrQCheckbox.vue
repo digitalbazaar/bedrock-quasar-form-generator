@@ -1,13 +1,11 @@
 <template>
-  <q-field>
-    <q-checkbox
-      v-model="value"
-      :disabled="field.disabled"
-      :class="field.classes"
-      :label="field.label"
-      :readonly="field.readonly"
-      v-on="inputListeners" />
-  </q-field>
+  <q-checkbox
+    v-model="value"
+    :disabled="field.disabled"
+    :class="field.classes"
+    :label="field.label"
+    :readonly="field.readonly"
+    v-on="inputListeners" />
 </template>
 <script>
 /*!

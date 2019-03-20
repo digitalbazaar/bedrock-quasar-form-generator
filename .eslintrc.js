@@ -6,5 +6,6 @@ module.exports = {
   extends: [
     'eslint-config-digitalbazaar',
     'eslint-config-digitalbazaar/vue'
+    'eslint-config-digitalbazaar/jsdoc'
   ]
 };
