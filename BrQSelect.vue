@@ -1,16 +1,14 @@
 <template>
-  <q-field>
-    <q-select
-      v-model="value"
-      :autocomplete="field.autocomplete"
-      :disabled="field.disabled"
-      :class="field.classes"
-      :float-label="field.label"
-      :placeholder="field.placeholder"
-      :readonly="field.readonly"
-      :options="field.options"
-      v-on="inputListeners" />
-  </q-field>
+  <q-select
+    v-model="value"
+    :autocomplete="field.autocomplete"
+    :disabled="field.disabled"
+    :class="field.classes"
+    :label="field.label"
+    :placeholder="field.placeholder"
+    :readonly="field.readonly"
+    :options="field.options"
+    v-on="inputListeners" />
 </template>
 <script>
 /*!
