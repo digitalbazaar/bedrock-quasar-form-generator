@@ -1,7 +1,7 @@
 <template>
   <q-input
     v-model="value"
-    :type="isPassword ? 'password' : 'text'"
+    :type="visible ? 'text' : 'password'"
     :autocomplete="field.autocomplete"
     :disabled="field.disabled"
     :class="field.classes"
@@ -13,9 +13,9 @@
     v-on="inputListeners">
     <template v-slot:append>
       <q-icon
-        :name="isPassword ? 'visibility_off' : 'visibility'"
+        :name="visible ? 'visibility' : 'visibility_off'"
         class="cursor-pointer"
-        @click="isPassword = !isPassword" />
+        @click="visible = !visible" />
     </template>
   </q-input>
 </template>
@@ -33,7 +33,7 @@ export default {
   mixins: [fieldMixin],
   data() {
     return {
-      isPassword: true
+      visible: false
     };
   }
 };
