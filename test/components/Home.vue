@@ -134,7 +134,16 @@ export default {
         },
         email: {
           //component: 'SomeCustomComponent',
-          placeholder: 'Your email address'
+          placeholder: 'Your email address',
+          validation: {
+            required: true,
+            regex: '^[-a-zA-Z0-9~!$%^&*_=+}{\\\'?]+(\\.[-a-zA-Z0-9~!$%^&*_=+}' +
+              '{\\\'?]+)*@(((([a-zA-Z0-9]{1}[a-zA-Z0-9\\-]{0,62}' +
+              '[a-zA-Z0-9]{1})|[a-zA-Z])\\.)+[a-zA-Z]{2,6})$',
+            errors: {
+              invalid: 'Email address is invalid.'
+            }
+          }
         },
         status: {
           placeholder: 'Your status...',

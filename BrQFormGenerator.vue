@@ -24,6 +24,7 @@ import BrQInput from './BrQInput.vue';
 import BrQPassword from './BrQPassword.vue';
 import BrQSelect from './BrQSelect.vue';
 import * as validators from 'vuelidate/lib/validators';
+const {helpers} = validators;
 
 export default {
   name: 'BrQFormGenerator',
@@ -94,8 +95,8 @@ export default {
         }
         let params = validation[name];
         // check for validator name in vuelidate validators
-        if(name in validators) {
-          const validator = validators[name];
+        const validator = validators[name];
+        if(validator) {
           if(params === true) {
             // no parameters, just use validator directly
             fieldValidators[name] = validator;
@@ -111,6 +112,13 @@ export default {
           fieldValidators[name] = () => {
             return this.value[field.id] === this.value[params];
           };
+        } else if(name === 'regex') {
+          // special custom validator for regex
+          if(!Array.isArray(params)) {
+            params = [params];
+          }
+          params = params.map(p => new RegExp(p));
+          fieldValidators[name] = helpers.regex('regex', ...params);
         } else {
           // unknown validator, ignore
           console.warn(
