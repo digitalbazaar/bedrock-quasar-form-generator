@@ -1,15 +1,19 @@
 <template>
   <q-input
     v-model="value"
+    bottom-slots
     :type="visible ? 'text' : 'password'"
     :autocomplete="field.autocomplete"
     :disabled="field.disabled"
     :class="field.classes"
+    :error="validation.$error"
+    :error-message="errorMessage"
     :label="field.label"
     :maxlength="field.maxLength"
     :minlength="field.minLength"
     :placeholder="field.placeholder"
     :readonly="field.readonly"
+    @blur="validation.$touch"
     v-on="inputListeners">
     <template v-slot:append>
       <q-icon

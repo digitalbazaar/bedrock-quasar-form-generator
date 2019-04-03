@@ -1,11 +1,9 @@
 <template>
-  <br-q-password
-    v-if="field.component.params.type === 'password'"
-    :value="value"
-    :field="field" />
   <q-input
-    v-else
     v-model="value"
+    bottom-slots
+    :error="validation.$error"
+    :error-message="errorMessage"
     :autocomplete="field.autocomplete"
     :disabled="field.disabled"
     :class="field.classes"
@@ -15,6 +13,7 @@
     :placeholder="field.placeholder"
     :readonly="field.readonly"
     :type="field.component.params.type || 'text'"
+    @blur="validation.$touch"
     v-on="inputListeners" />
 </template>
 <script>
@@ -22,14 +21,11 @@
  * Copyright (c) 2019 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
-import BrQPassword from './BrQPassword.vue';
+
 import {fieldMixin} from './fieldMixin.js';
 
 export default {
   name: 'BrQInput',
-  components: {
-    BrQPassword
-  },
   mixins: [fieldMixin]
 };
 </script>

@@ -8,6 +8,7 @@
         :is="field.component.name"
         v-model="value[field.id]"
         :field="field"
+        :validation="$v.value[field.id] || {}"
         v-on="inputListeners" />
     </div>
   </div>
@@ -20,11 +21,13 @@
 
 import BrQCheckbox from './BrQCheckbox.vue';
 import BrQInput from './BrQInput.vue';
+import BrQPassword from './BrQPassword.vue';
 import BrQSelect from './BrQSelect.vue';
+import * as validators from 'vuelidate/lib/validators';
 
 export default {
   name: 'BrQFormGenerator',
-  components: {BrQCheckbox, BrQInput, BrQSelect},
+  components: {BrQCheckbox, BrQInput, BrQPassword, BrQSelect},
   props: {
     value: {
       type: Object,
@@ -47,7 +50,7 @@ export default {
       default: () => ({
         boolean: 'br-q-checkbox',
         text: 'br-q-input',
-        masked: {name: 'br-q-input', params: {type: 'password'}},
+        masked: {name: 'br-q-password', params: {type: 'password'}},
         email: {name: 'br-q-input', params: {type: 'email'}},
         enum: 'br-q-select'
       })
@@ -74,6 +77,48 @@ export default {
         }
       };
     }
+  },
+  validations() {
+    const validations = {};
+    const value = validations.value = {};
+    for(const field of this.fields) {
+      const {validation} = field;
+      if(!validation) {
+        continue;
+      }
+      const fieldValidators = value[field.id] = {};
+      for(const name in validation) {
+        if(name === 'errors') {
+          // `errors` is for error messages
+          continue;
+        }
+        let params = validation[name];
+        // check for validator name in vuelidate validators
+        if(name in validators) {
+          const validator = validators[name];
+          if(params === true) {
+            // no parameters, just use validator directly
+            fieldValidators[name] = validator;
+          } else {
+            // pass parameters to validator factory
+            if(!Array.isArray(params)) {
+              params = [params];
+            }
+            fieldValidators[name] = validators[name](...params);
+          }
+        } else if(name === 'match') {
+          // special custom validator for matching other fields
+          fieldValidators[name] = () => {
+            return this.value[field.id] === this.value[params];
+          };
+        } else {
+          // unknown validator, ignore
+          console.warn(
+            `Unknown validator "${name}" for field "${field.id}".`);
+        }
+      }
+    }
+    return validations;
   }
 };
 
