@@ -30,7 +30,6 @@
 
 import {BrAddressForm} from 'bedrock-vue-address-form';
 import {BrQFormGenerator} from 'bedrock-quasar-form-generator';
-import {minLength, required} from 'vuelidate/lib/validators';
 import Vue from 'vue';
 
 Vue.component('br-address-form', BrAddressForm);
@@ -74,6 +73,11 @@ export default {
           label: 'Password',
           inputType: 'masked'
         },
+        confirmPassword: {
+          range: 'string',
+          label: 'Confirm Password',
+          inputType: 'masked'
+        },
         email: {
           range: 'string',
           label: 'Email',
@@ -96,14 +100,35 @@ export default {
       },
       schema: {
         name: {
-          placeholder: 'Your name'
+          placeholder: 'Your name',
+          validation: {
+            minLength: 1,
+            required: true,
+            errors: {
+              invalid: 'Your name is required.'
+            }
+          }
         },
         password: {
           hint: 'Minimum 6 characters',
           validation: {
-            value: {
-              minLength: minLength(6),
-              required
+            minLength: 6,
+            required: true,
+            errors: {
+              invalid: 'Password is required.',
+              minLength: 'Password must be at least 6 characters long.'
+            }
+          }
+        },
+        confirmPassword: {
+          validation: {
+            minLength: 6,
+            required: true,
+            match: 'password',
+            errors: {
+              invalid: 'Confirm password is required.',
+              required: 'Confirm password is required.',
+              match: 'Passwords do not match.'
             }
           }
         },
