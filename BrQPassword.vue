@@ -17,7 +17,7 @@
     v-on="inputListeners">
     <template v-slot:append>
       <q-icon
-        :name="visible ? 'visibility' : 'visibility_off'"
+        :name="visible ? hideIcon : showIcon"
         class="cursor-pointer"
         @click="visible = !visible" />
     </template>
