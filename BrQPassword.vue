@@ -2,6 +2,7 @@
   <q-input
     v-model="value"
     bottom-slots
+    input-class="text-subtitle1"
     :type="visible ? 'text' : 'password'"
     :autocomplete="field.autocomplete"
     :disabled="field.disabled"

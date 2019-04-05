@@ -2,6 +2,7 @@
   <q-input
     v-model="value"
     bottom-slots
+    input-class="text-subtitle1"
     :error="validation.$error"
     :error-message="errorMessage"
     :autocomplete="field.autocomplete"
