@@ -18,7 +18,7 @@
     <template v-slot:append>
       <q-icon
         :name="visible ? hideIcon : showIcon"
-        class="cursor-pointer"
+        class="cursor-pointer toggle-icon"
         @click="visible = !visible" />
     </template>
   </q-input>
@@ -44,4 +44,9 @@ export default {
 </script>
 
 <style scoped>
+
+.toggle-icon {
+    margin-left: 10px;
+}
+
 </style>
