@@ -47,7 +47,7 @@ export default {
 <style scoped>
 
 .toggle-icon {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 </style>
