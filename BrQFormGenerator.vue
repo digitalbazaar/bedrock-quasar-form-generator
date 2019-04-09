@@ -53,6 +53,7 @@ export default {
         text: 'br-q-input',
         masked: {name: 'br-q-password', params: {type: 'password'}},
         email: {name: 'br-q-input', params: {type: 'email'}},
+        url: {name: 'br-q-input', params: {type: 'url'}},
         enum: 'br-q-select'
       })
     }
