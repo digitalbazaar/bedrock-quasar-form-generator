@@ -1,6 +1,6 @@
 {
   "name": "bedrock-quasar-form-generator",
-  "version": "1.0.1-0",
+  "version": "2.0.0",
   "description": "Vue.js + quasar framework form generator",
   "main": "index.js",
   "scripts": {
