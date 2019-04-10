@@ -1,6 +1,6 @@
 # bedrock-quasar-form-generator ChangeLog
 
-## 2.0.0 - TBD
+## 2.0.0 - 2019-04-10
 
 ### Changed
 - Upgrade to bedrock-quasar version 3.0.
