@@ -26,8 +26,15 @@ import BrQSelect from './BrQSelect.vue';
 import * as validators from 'vuelidate/lib/validators';
 const {helpers} = validators;
 
+/*
+ * BrQFormGenerator takes in a value, a vocab, and a schema as props
+ * and then computes the fields and uses a dynamic vue component
+ * to layout the form. The form can contain boolean, text, masked,
+ * email, url, enum, or custom components.
+ */
 export default {
   name: 'BrQFormGenerator',
+  // the dynamic component can be any of these components
   components: {BrQCheckbox, BrQInput, BrQPassword, BrQSelect},
   props: {
     value: {
@@ -134,6 +141,7 @@ export default {
 function _getComponent({inputTypeMap, field}) {
   let component;
   if(field.component) {
+    // this is a higher order component passed into the component
     component = field.component;
   } else {
     let {inputType} = field;
@@ -144,6 +152,7 @@ function _getComponent({inputTypeMap, field}) {
           inputType = 'text';
       }
     }
+    // inputType can be boolean, text, masked, email, url, or enum
     component = inputTypeMap[inputType];
   }
   if(typeof component !== 'string') {
